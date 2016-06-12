@@ -60,7 +60,7 @@ public class App implements Runnable
         MongoCollection<Document> workerCollection = database.getCollection("worker");
         MongoCollection<Document> eventHandlingStartCollection = database.getCollection("eventHandlingStart");
         MongoCollection<Document> eventStorageDepletionCollection = database.getCollection("eventStorageDepletion");
-        MongoCollection<Document> eventBaggagArrivalCollection = database.getCollection("eventBaggageArrival");
+        MongoCollection<Document> eventBaggageArrivalCollection = database.getCollection("eventBaggageArrival");
         MongoCollection<Document> eventHandlingEndCollection = database.getCollection("eventHandlingEnd");
         MongoCollection<Document> groundHandlerCollection = database.getCollection("groundHandler");
 
@@ -122,9 +122,9 @@ public class App implements Runnable
                 eventStorageDepletionCollection.deleteOne(cursor.next());
             }
 
-            cursor = eventBaggagArrivalCollection.find().iterator();
+            cursor = eventBaggageArrivalCollection.find().iterator();
             while (cursor.hasNext()){
-                eventBaggagArrivalCollection.deleteOne(cursor.next());
+                eventBaggageArrivalCollection.deleteOne(cursor.next());
             }
 
             cursor = eventHandlingEndCollection.find().iterator();
@@ -324,7 +324,7 @@ public class App implements Runnable
             (Flight) pulled remaining 0, bagsOnCarousel=4
             (Flight) loaded remaining 4
             */
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 14, 2, 4);
 
             /*
@@ -333,9 +333,9 @@ public class App implements Runnable
             (Flight) pulled remaining 0, bagsOnCarousel=17
             (Flight) loaded 16 bags, bagsOnCarousel=1
             */
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 13, 4, 17);
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 13, 4, -16);
 
             /*
@@ -345,9 +345,9 @@ public class App implements Runnable
             (Flight) pulled remaining 0, bagsOnCarousel=1
             (Flight) loaded remaining 1
             */
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 2, 14, 2);
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 2, 12, 0);
 
 
@@ -357,7 +357,7 @@ public class App implements Runnable
             (Flight) pulled remaining 0, bagsOnCarousel=6
             (Flight) loaded remaining 6
             */
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 14, 11, 6);
 
 
@@ -367,7 +367,7 @@ public class App implements Runnable
             (Flight) pulled remaining 0, bagsOnCarousel=3
             (Flight) loaded remaining 3
             */
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 4, 19, 3);
 
             /*
@@ -376,7 +376,7 @@ public class App implements Runnable
             (Flight) pulled remaining 0, bagsOnCarousel=1
             (Flight) loaded remaining 1
             */
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 20, 1028, 1);
 
             /*(Event t=22 ðŸ›„) flight=22
@@ -384,7 +384,7 @@ public class App implements Runnable
             (Flight) pulled remaining 0, bagsOnCarousel=2
             (Flight) loaded remaining 2*/
 
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 11, 22, 2);
 
 
@@ -392,7 +392,7 @@ public class App implements Runnable
             (Flight) 2 bags --> carousel 2
             (Flight) pulled remaining 0, bagsOnCarousel=2
             (Flight) loaded remaining 2*/
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     22, 2, 20, 2);
             t1.sleep(10000);
 
@@ -405,19 +405,19 @@ public class App implements Runnable
                     23, 16, 14, 1 ,4, 1, workers);
 
 
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     23, 14, 2, 3);
 
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     23, 16, 4, 5);
 
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     23, 15, 9, 3);
 
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     23, 2, 20, 6);
 
-            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggagArrivalCollection, carouselCollection,
+            InsertClassDAO.insertEventBaggageArrivalEvents(eventBaggageArrivalCollection, carouselCollection,
                     23, 14, 32, 4);
 
             t1.sleep(50000);

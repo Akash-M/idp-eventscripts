@@ -5,9 +5,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.bson.Document;
-import org.bson.conversions.Bson;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -199,15 +196,6 @@ public class InsertClassDAO {
                                                     int time, int flight_id, int bags) {
 
 
-        /*Collection: eventBaggageArrival
-        {
-            "_id" : ObjectId("572211d010d11ebece4a1f83"),
-                "_time" : 1,
-                "flight_id" : 1,
-                "bags" : 10
-        }*/
-
-
         eventBaggageArrivalCollection.insertOne(new Document("_time", time)
                 .append("bags", bags)
                 .append("flight_id", flight_id ));
@@ -264,8 +252,6 @@ public class InsertClassDAO {
         Document updateQuery = new Document();
         updateQuery.append("$inc", new Document().append("currentCapacity", bagsAddedOrRemoved));
         carouselCollection.updateOne(searchQuery, updateQuery);
-        System.out.println("Updated Carousel Current Capacity");
-        System.out.println(carouselCollection.find(new Document().append("_id", carousel_id)));
         return true;
     }
 
