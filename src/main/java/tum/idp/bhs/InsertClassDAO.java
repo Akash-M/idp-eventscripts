@@ -15,18 +15,11 @@ public class InsertClassDAO {
 
     public static Boolean insertCarousel(MongoCollection<Document> carouselCollection, int id, int xCord,
                                   int yCord, int parkPos, int maxCap, int currCap,
-                                  Integer[] flights, Integer[] workStations){
+                                  Integer[] flights, Integer workStations){
 
         BasicDBList flightDBList = new BasicDBList();
         for(int i=0; i < flights.length; i++){
             flightDBList.add(flights[i]);
-        }
-
-        BasicDBList workingStationList = new BasicDBList();
-        if(null != workStations){
-            for(int i=0; i < workStations.length; i++){
-                workingStationList.add(workStations[i]);
-            }
         }
 
         if(carouselCollection.find(new Document("_id",id)).iterator().hasNext()){
@@ -48,7 +41,7 @@ public class InsertClassDAO {
                     .append("maxCapacity", maxCap)
                     .append("currentCapacity", currCap)
                     .append("flight_id", flightDBList)
-                    .append("workingStationsAssigned", workingStationList));
+                    .append("workStations", workStations));
         }
         return true;
 
@@ -167,7 +160,7 @@ public class InsertClassDAO {
         eventHandlingStartCollection.insertOne(new Document("_time",time)
                 .append("carousel_id", carousel_id)
                 .append("flight_id", flight_id)
-                .append("workingstations", No_of_workstations ));
+                .append("workStations", No_of_workstations ));
 
         return true;
 
@@ -235,7 +228,7 @@ public class InsertClassDAO {
                                                                        int carousel_xCord, int carousel_yCord, ArrayList<Integer> worker_id){
         insertEventHandlingStart(eventHandlingStartCollection, time,carousel_id, flight_id, no_of_workingstations);
         Integer[] newflights = {flight_id};
-        insertCarousel(carouselCollection, carousel_id, carousel_xCord, carousel_yCord, 1, 40, 0, newflights, null );
+        insertCarousel(carouselCollection, carousel_id, carousel_xCord, carousel_yCord, 1, 40, 0, newflights, no_of_workingstations );
         insertEventStorageDepletionStart(eventStorageDepletionCollection, time, flight_id);
         insertFlight(flightCollection, flight_id, 1, time+12,carousel_id, worker_id, null );
 
